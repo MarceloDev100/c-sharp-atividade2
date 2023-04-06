@@ -1,4 +1,6 @@
-﻿namespace Course.Entities
+﻿using System.Text;
+
+namespace Course.Entities
 {
     class Post
     {
@@ -30,5 +32,20 @@
             Comments.Remove(comment);
         }
 
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+                 sb.AppendLine(Title)
+                .AppendLine($"{Likes} Likes - {Moment.ToString("dd/MM/yyyy HH:mm:ss")}")
+                .AppendLine(Content)
+                .AppendLine("Comments: ");
+
+            foreach(Comment comment in Comments)
+            {
+                sb.AppendLine(comment.Text);
+            } 
+            
+            return sb.ToString();
+        }
     }
 }
